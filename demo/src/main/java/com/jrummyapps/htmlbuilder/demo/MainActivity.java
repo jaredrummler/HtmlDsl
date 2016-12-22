@@ -40,38 +40,46 @@ public class MainActivity extends AppCompatActivity {
     HtmlBuilder html = new HtmlBuilder();
     html.h1("Example Usage");
 
-    html.font(0xFFAA1D5D, "HtmlBuilder")
+    html.h3().font("cursive", "Code:").close();
+
+    html.font(0xFFCAE682, "HtmlBuilder")
         .append(' ')
-        .font(0xFFC3B59B, "html")
+        .font(0xFFD4C4A9, "html")
         .append(' ')
         .font(Color.GRAY, "=")
         .append(" ")
         .font(0xFF33B5E5, "new")
         .append(" ")
-        .font(0xFFAA1D5D, "HtmlBuilder")
-        .append("();")
+        .font(0xFFCAE682, "HtmlBuilder")
+        .append("()")
         .br();
 
-    html.append("html.strong(")
-        .font(Color.GREEN, "\"Strong text\"")
-        .append(");")
+    html.font(0xFFD4C4A9, "html")
+        .append(".strong(")
+        .font(0xFF95E454, "\"Strong text\"")
+        .append(").br();")
         .br();
 
-    html.append("html.font(")
-        .font(0xFFAA1D5D, "Color")
+    html.font(0xFFD4C4A9, "html")
+        .append(".font(")
+        .font(0xFFCAE682, "Color")
         .append('.')
-        .font(Color.CYAN, "RED")
+        .font(0xFF53DCCD, "RED")
         .append(", ")
-        .font(Color.GREEN, "\"This will be red text\"")
+        .font(0xFF95E454, "\"This will be red text\"")
         .append(");")
         .br();
 
-    html.font(0xFFAA1D5D, "textView")
+    html.font(0xFFCAE682, "textView")
         .append(".setText(")
-        .font(0xFFC3B59B, "html")
+        .font(0xFFD4C4A9, "html")
         .append(".build());")
         .close()
         .br();
+
+    html.h3().font("cursive", "Result:").close();
+
+    html.strong("Strong text").br().font(Color.RED, "This will be red text");
 
     html.h1("Supported Tags");
 
@@ -111,8 +119,6 @@ public class MainActivity extends AppCompatActivity {
         .append("&nbsp;&nbsp;|&nbsp;&nbsp;")
         .strong().a("https://github.com/jaredrummler", "GitHub").close()
         .close();
-
-    System.out.println(html);
 
     textView.setMovementMethod(LinkMovementMethod.getInstance());
     textView.setText(html.build());
