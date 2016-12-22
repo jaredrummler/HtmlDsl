@@ -1,5 +1,10 @@
 # HTML Builder
 
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.jrummyapps/html-builder/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.jrummyapps/html-builder)
+[![License](http://img.shields.io/:license-apache-blue.svg)](LICENSE)
+[![API](https://img.shields.io/badge/API-9%2B-blue.svg?style=flat)](https://developer.android.com/reference/android/os/Build.VERSION_CODES.html#GINGERBREAD) 
+[![Twitter Follow](https://img.shields.io/twitter/follow/jrummyapps.svg?style=social)](https://twitter.com/jrummyapps)
+
 Build valid HTML for Android TextView.
 
 ![Screenshot](art/screenshot.png)
@@ -51,6 +56,23 @@ textView.setText(html.build());
  <li><code>&lt;ul&gt;</code> (Android 7.0+)</li>
  <li><code>&lt;li&gt;</code> (Android 7.0+)</li>
  </ul>
+
+## Download
+
+Download [the latest AAR](https://repo1.maven.org/maven2/com/jrummyapps/html-builder/1.0.0/html-builder-1.0.0.aar) or grab via Gradle:
+
+```groovy
+compile 'com.jrummyapps:html-builder:1.0.0'
+```
+or Maven:
+```xml
+<dependency>
+  <groupId>com.jrummyapps</groupId>
+  <artifactId>html-builder</artifactId>
+  <version>1.0.0</version>
+  <type>aar</type>
+</dependency>
+```
 
 ## License
 
