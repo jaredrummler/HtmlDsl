@@ -14,3 +14,5 @@ dependencies {
   compile 'com.android.support:support-annotations:25.1.0'
   testCompile 'junit:junit:4.12'
 }
+
+apply from: 'https://raw.githubusercontent.com/jaredrummler/android-artifact-push/master/maven/gradle-mvn-push.gradle'
