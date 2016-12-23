@@ -23,6 +23,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,30 +37,49 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     TextView textView = (TextView) findViewById(R.id.textView);
+    textView.setMovementMethod(LinkMovementMethod.getInstance());
+    textView.setText(buildDemoHtml());
+  }
 
+  @Override public boolean onCreateOptionsMenu(Menu menu) {
+    menu.add(0, Menu.FIRST, 0, "GitHub").setIcon(R.drawable.ic_github).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+    return super.onCreateOptionsMenu(menu);
+  }
+
+  @Override public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case Menu.FIRST:
+        try {
+          startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/jaredrummler/html-builder")));
+        } catch (ActivityNotFoundException ignored) {
+        }
+        return true;
+      default:
+        return super.onOptionsItemSelected(item);
+    }
+  }
+
+  private Spanned buildDemoHtml() {
     HtmlBuilder html = new HtmlBuilder();
     html.h1("Example Usage");
 
     html.h3().font("cursive", "Code:").close();
-
     html.font(0xFFCAE682, "HtmlBuilder")
         .append(' ')
         .font(0xFFD4C4A9, "html")
         .append(' ')
-        .font(Color.GRAY, "=")
+        .font(0xFF888888, "=")
         .append(" ")
         .font(0xFF33B5E5, "new")
         .append(" ")
         .font(0xFFCAE682, "HtmlBuilder")
         .append("()")
         .br();
-
     html.font(0xFFD4C4A9, "html")
         .append(".strong(")
         .font(0xFF95E454, "\"Strong text\"")
         .append(").br();")
         .br();
-
     html.font(0xFFD4C4A9, "html")
         .append(".font(")
         .font(0xFFCAE682, "Color")
@@ -69,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
         .font(0xFF95E454, "\"This will be red text\"")
         .append(");")
         .br();
-
     html.font(0xFFCAE682, "textView")
         .append(".setText(")
         .font(0xFFD4C4A9, "html")
@@ -78,11 +97,9 @@ public class MainActivity extends AppCompatActivity {
         .br();
 
     html.h3().font("cursive", "Result:").close();
-
     html.strong("Strong text").br().font(Color.RED, "This will be red text");
 
     html.h1("Supported Tags");
-
     html.append("&lt;a href=&quot;...&quot;&gt;").br();
     html.append("&lt;b&gt;").br();
     html.append("&lt;big&gt;").br();
@@ -113,33 +130,13 @@ public class MainActivity extends AppCompatActivity {
     html.append("&li;u&gt;").br();
 
     html.h1("Links");
-
     html.p()
         .strong().a("https://twitter.com/jrummy16", "Twitter").close()
         .append("&nbsp;&nbsp;|&nbsp;&nbsp;")
         .strong().a("https://github.com/jaredrummler", "GitHub").close()
         .close();
 
-    textView.setMovementMethod(LinkMovementMethod.getInstance());
-    textView.setText(html.build());
-  }
-
-  @Override public boolean onCreateOptionsMenu(Menu menu) {
-    menu.add(0, Menu.FIRST, 0, "GitHub").setIcon(R.drawable.ic_github).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-    return super.onCreateOptionsMenu(menu);
-  }
-
-  @Override public boolean onOptionsItemSelected(MenuItem item) {
-    switch (item.getItemId()) {
-      case Menu.FIRST:
-        try {
-          startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/jaredrummler/html-builder")));
-        } catch (ActivityNotFoundException ignored) {
-        }
-        return true;
-      default:
-        return super.onOptionsItemSelected(item);
-    }
+    return html.build();
   }
 
 }
