@@ -19,8 +19,12 @@ apply from: 'https://raw.githubusercontent.com/jaredrummler/android-artifact-pus
 
 android.libraryVariants.all { variant ->
   def name = variant.buildType.name
+  if (name == com.android.builder.core.BuilderConstants.DEBUG) return // Skip debug builds.
   def task = project.tasks.create "jar${name.capitalize()}", Jar
-  task.baseName = project.name + "-" + name
+  task.group = "Publications"
+  task.description = "Create compiled jar of project."
+  task.classifier = "binary"
+  task.baseName = project.name + '-' + name
   task.dependsOn variant.javaCompile
   task.from variant.javaCompile.destinationDir
   artifacts.add('archives', task)
