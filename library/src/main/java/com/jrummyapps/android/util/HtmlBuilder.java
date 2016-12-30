@@ -101,10 +101,6 @@ public class HtmlBuilder {
     return open(element, null);
   }
 
-  public HtmlBuilder open(char element) {
-    return open(String.valueOf(element));
-  }
-
   public HtmlBuilder close(String element) {
     html.append("</").append(element).append('>');
     for (Iterator<String> iterator = tags.iterator(); iterator.hasNext(); ) {
@@ -203,7 +199,7 @@ public class HtmlBuilder {
   }
 
   public HtmlBuilder b() {
-    return open('b');
+    return open("b");
   }
 
   public HtmlBuilder b(String text) {
@@ -338,7 +334,7 @@ public class HtmlBuilder {
   }
 
   public HtmlBuilder i() {
-    return open('i');
+    return open("i");
   }
 
   public HtmlBuilder i(String text) {
@@ -355,7 +351,7 @@ public class HtmlBuilder {
   }
 
   public HtmlBuilder p() {
-    return open('p');
+    return open("p");
   }
 
   public HtmlBuilder p(String text) {
@@ -418,7 +414,7 @@ public class HtmlBuilder {
   }
 
   public HtmlBuilder u() {
-    return open('u');
+    return open("u");
   }
 
   public HtmlBuilder u(String text) {
