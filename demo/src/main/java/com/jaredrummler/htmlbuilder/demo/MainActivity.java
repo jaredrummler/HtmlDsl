@@ -1,21 +1,20 @@
 /*
- * Copyright (C) 2016 JRummy Apps Inc.
+ * Copyright (C) 2017 Jared Rummler
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * Raw
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
 
-package com.jrummyapps.htmlbuilder.demo;
+package com.jaredrummler.htmlbuilder.demo;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -29,7 +28,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.jrummyapps.android.util.HtmlBuilder;
+import com.jaredrummler.android.util.HtmlBuilder;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -131,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
 
     html.h1("Links");
     html.p()
-        .strong().a("https://twitter.com/jrummy16", "Twitter").close()
+        .strong().a("https://twitter.com/jaredrummler", "Twitter").close()
         .append("&nbsp;&nbsp;|&nbsp;&nbsp;")
         .strong().a("https://github.com/jaredrummler", "GitHub").close()
         .close();

@@ -1,9 +1,9 @@
 # HTML Builder
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.jrummyapps/html-builder/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.jrummyapps/html-builder)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.jaredrummler/html-builder/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.jaredrummler/html-builder)
 [![License](http://img.shields.io/:license-apache-blue.svg)](LICENSE)
 [![API](https://img.shields.io/badge/API-9%2B-blue.svg?style=flat)](https://developer.android.com/reference/android/os/Build.VERSION_CODES.html#GINGERBREAD) 
-[![Twitter Follow](https://img.shields.io/twitter/follow/jrummyapps.svg?style=social)](https://twitter.com/jrummyapps)
+[![Twitter Follow](https://img.shields.io/twitter/follow/jaredrummler.svg?style=social)](https://twitter.com/jaredrummler)
 
 Build valid HTML for Android TextView.
 
@@ -59,15 +59,15 @@ textView.setText(html.build());
 
 ## Download
 
-Download [the latest AAR](https://repo1.maven.org/maven2/com/jrummyapps/html-builder/1.0.0/html-builder-1.0.0.aar) or grab via Gradle:
+Download [the latest AAR](https://repo1.maven.org/maven2/com/jaredrummler/html-builder/1.0.0/html-builder-1.0.0.aar) or grab via Gradle:
 
 ```groovy
-compile 'com.jrummyapps:html-builder:1.0.0'
+compile 'com.jaredrummler:html-builder:1.0.0'
 ```
 or Maven:
 ```xml
 <dependency>
-  <groupId>com.jrummyapps</groupId>
+  <groupId>com.jaredrummler</groupId>
   <artifactId>html-builder</artifactId>
   <version>1.0.0</version>
   <type>aar</type>
