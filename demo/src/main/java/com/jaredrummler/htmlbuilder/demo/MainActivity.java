@@ -21,16 +21,29 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-
 import com.jaredrummler.android.util.HtmlBuilder;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
+
+  private final Handler handler = new Handler();
+  private final Random random = new Random();
+
+  private final Runnable annoyingSubtitleRunnable = new Runnable() {
+    @Override public void run() {
+      String subtitleText = "Build valid HTML for Android TextView";
+      int randomColor = 0xFF000000 + 256 * 256 * random.nextInt(256) + 256 * random.nextInt(256) + random.nextInt(256);
+      getSupportActionBar().setSubtitle(new HtmlBuilder().font(randomColor, subtitleText).build());
+      handler.postDelayed(this, 500);
+    }
+  };
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -38,6 +51,12 @@ public class MainActivity extends AppCompatActivity {
     TextView textView = (TextView) findViewById(R.id.textView);
     textView.setMovementMethod(LinkMovementMethod.getInstance());
     textView.setText(buildDemoHtml());
+    handler.post(annoyingSubtitleRunnable);
+  }
+
+  @Override protected void onStop() {
+    super.onStop();
+    handler.removeCallbacks(annoyingSubtitleRunnable);
   }
 
   @Override public boolean onCreateOptionsMenu(Menu menu) {
