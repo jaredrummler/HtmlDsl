@@ -22,6 +22,14 @@ Download [the latest AAR](https://repo1.maven.org/maven2/com/jaredrummler/html-d
 implementation("com.jaredrummler:html-dsl:1.0.0")
 ```
 
+## Structure
+
+* `buildSrc` — Gradle dependencies, plugins, versions
+* `library` - The HTML DSL library
+* `library/src/test` - Unit tests for the library
+* `demo` - Android demo project using HTML DSL
+* `scripts` - Scripts to publish library to Maven
+
 ----------
 
 ## Usage
