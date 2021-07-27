@@ -22,19 +22,7 @@ Download [the latest AAR](https://repo1.maven.org/maven2/com/jaredrummler/html-d
 implementation("com.jaredrummler:html-dsl:1.0.0")
 ```
 
-## Structure
-
-* `buildSrc` — Gradle dependencies, plugins, versions
-* `build.gradle.kts` — Root gradle config file
-* `settings.gradle.kts` — Root gradle settings file
-* `library` - The HTML DSL library
-* `library/src/test` - Unit tests for the library
-* `demo` - Android demo project using HTML DSL
-* `scripts` - Scripts to publish library to Maven
-
 ----------
-
-## Usage
 
 ## Usage
 
@@ -70,15 +58,6 @@ textView.setHtml {
         // ...
     }
 
-    p {
-        font(face = "monospace", color = "#3ddc84") {
-            unsafe {
-                +"I wrote this library because I am ${Sup(Del("high"))} an Android fanatic."
-            }
-        }
-    }
-
-    br()
     small {
         sub {
             +"by "
@@ -89,6 +68,36 @@ textView.setHtml {
         }
     }
 }
+```
+
+### Render HTML to a string
+
+```kotlin
+val htmlString = HTML.create {
+    p {
+        font(face = "monospace", color = "#3ddc84") {
+            unsafe {
+                +"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            }
+        }
+    }
+}.render(prettyPrint = true)
+```
+
+### Write HTML to a file:
+
+```kotlin
+HtmlRenderer<FileWriter>(HTML.create {
+    small {
+        sub {
+            +"by "
+            a {
+                href = "https://github.com/jaredrummler"
+                text = "Jared Rummler"
+            }
+        }
+    }
+}, FileWriter("output.html"), true)
 ```
 
 ## Supported HTML elements:
